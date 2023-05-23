@@ -8,17 +8,37 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] Vector2Int mazeSize;
     [SerializeField] GameObject player;
     [SerializeField] GameObject coins;
-    List<MazeNode> nodes = new List<MazeNode>();
 
+    List<MazeNode> nodes = new List<MazeNode>();
+    LevelSelector level;
+    public string difficulties;
+    public int maxCoin;
 
     private void Start()
     {
         GenerateMazeInstant(mazeSize);
         InitializePlayer();
+        InitializeCoins();
     }
 
     void GenerateMazeInstant(Vector2Int size)
     {
+        difficulties = level.getLevel();
+
+        if (difficulties == "easy_Level")
+        {
+            size.Set(5,5);
+            maxCoin = (5 * 5) - 1;
+        }else if (difficulties == "normal_Level")
+        {
+            size.Set(15,15);
+            maxCoin = (15 * 15) - 1;
+        }else if (difficulties == "hard_level")
+        {
+            size.Set(30,30);
+            maxCoin = (30 * 30) - 1;
+        }
+        
         
 
         //create Node
@@ -29,9 +49,10 @@ public class MazeGenerator : MonoBehaviour
                 Vector3 nodePos = new Vector3(x - (size.x / 2f), 0 ,  y - (size.y / 2f));
                 MazeNode newNode = Instantiate(nodePrefab, nodePos, Quaternion.identity, transform);
                 nodes.Add(newNode);
+                
             }
         }
-
+        
         
         List<MazeNode> completedNodes = new List<MazeNode>();
         List<MazeNode> currentPath = new List<MazeNode>();
@@ -135,7 +156,19 @@ public class MazeGenerator : MonoBehaviour
     private void InitializePlayer()
     {
         //Vector3 posY = new Vector3 (0,-0.335f,0); , posY, Quaternion.identity
-        Instantiate(player, nodes[Random.Range(1, nodes.Count)].transform.localPosition , Quaternion.identity);
+        transform.localPosition = new Vector3(0, 0.335f , 0);
+        Instantiate(player, nodes[0].transform.localPosition , Quaternion.identity);
+    }
+
+    
+    private void InitializeCoins()
+    {
+        for (int i = 1; i < maxCoin; i++)
+        {
+            //Vector3 posY = new Vector3 (0,-0.335f,0); , posY, Quaternion.identity
+            //transform.position = new Vector3(0, 1, 0);
+            Instantiate(coins, nodes[i].transform.position , Quaternion.identity);
+        }
     }
 
     IEnumerator GenerateMaze(Vector2Int size)

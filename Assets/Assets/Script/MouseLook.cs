@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MouseLook : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
-
+    public Sensitivity_Slider maxMouseSensitivity;
     public Transform playerBody;
-
+    public float mouseSensitivity;
     float xRotation = 0f;
 
     void Start() 
@@ -16,6 +16,8 @@ public class MouseLook : MonoBehaviour
     }
 
     void Update(){
+        mouseSensitivity = maxMouseSensitivity.getLocalValue();
+        
         float rotationX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float rotationY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         
