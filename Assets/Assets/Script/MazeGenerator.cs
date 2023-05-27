@@ -8,12 +8,9 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] Vector2Int mazeSize;
     [SerializeField] GameObject player;
     [SerializeField] GameObject coins;
+    [SerializeField] int maxCoin;
 
     List<MazeNode> nodes = new List<MazeNode>();
-    LevelSelector level;
-    public string difficulties;
-    public int maxCoin;
-
     private void Start()
     {
         GenerateMazeInstant(mazeSize);
@@ -23,24 +20,6 @@ public class MazeGenerator : MonoBehaviour
 
     void GenerateMazeInstant(Vector2Int size)
     {
-        difficulties = level.getLevel();
-
-        if (difficulties == "easy_Level")
-        {
-            size.Set(5,5);
-            maxCoin = (5 * 5) - 1;
-        }else if (difficulties == "normal_Level")
-        {
-            size.Set(15,15);
-            maxCoin = (15 * 15) - 1;
-        }else if (difficulties == "hard_level")
-        {
-            size.Set(30,30);
-            maxCoin = (30 * 30) - 1;
-        }
-        
-        
-
         //create Node
         for(int x = 0; x < size.x ; x++)
         {
@@ -151,7 +130,7 @@ public class MazeGenerator : MonoBehaviour
                 currentPath.RemoveAt(currentPath.Count - 1);
             }
         }
-    } 
+    }
 
     private void InitializePlayer()
     {

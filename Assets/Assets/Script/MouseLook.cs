@@ -1,14 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class MouseLook : MonoBehaviour
 {
-    public Sensitivity_Slider maxMouseSensitivity;
+    /*
+    [SerializeField] private TextMeshProUGUI sliderText = null;
+    [SerializeField] private float maxMouseSensitivity = 100f;
+    */
+    //private float sens;
+    //private float localValue = 10f;
+
     public Transform playerBody;
-    public float mouseSensitivity;
+    public float mouseSensitivity = 100f;
     float xRotation = 0f;
+    
+    /*
+    public void SliderChange(float value)
+    {
+        localValue = value * maxMouseSensitivity * 0.01f;
+        sliderText.text = localValue.ToString("0");
+        sens = localValue;
+    }
+    */
 
     void Start() 
     {
@@ -16,8 +32,6 @@ public class MouseLook : MonoBehaviour
     }
 
     void Update(){
-        mouseSensitivity = maxMouseSensitivity.getLocalValue();
-        
         float rotationX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float rotationY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         

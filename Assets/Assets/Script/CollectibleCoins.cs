@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollectibleCoins : MonoBehaviour
 {
-    public int coins;
+    //public int coins;
 
     public void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Coin")
