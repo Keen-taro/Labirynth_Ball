@@ -8,7 +8,6 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     [SerializeField] private TextMeshProUGUI coinScore = null;
-    [SerializeField] GameObject finish_canvas;
     [SerializeField] int maxCoin;
     
 
@@ -29,17 +28,8 @@ public class ScoreManager : MonoBehaviour
         coinScore.text = coin.ToString() + " COINS";
     }
 
-    public void checkCoin()
-    {
-        if(coin == maxCoin){
-            finish_canvas.SetActive(true);
-            Cursor.lockState = CursorLockMode.Confined; 
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
-        checkCoin();
     }
 }

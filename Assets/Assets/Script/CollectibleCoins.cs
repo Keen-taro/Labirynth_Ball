@@ -11,6 +11,7 @@ public class CollectibleCoins : MonoBehaviour
         {
             Debug.Log("Coin Collected");
             ScoreManager.instance.AddPoint();
+            Finish_Stage.instance.addPointToFinish();
             //coins = coins + 1;
             //other.gameObject.SetActive(false);
             Destroy(other.gameObject);

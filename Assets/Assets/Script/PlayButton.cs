@@ -8,6 +8,7 @@ public class PlayButton : MonoBehaviour
     [SerializeField] GameObject easy_btn;
     [SerializeField] GameObject norm_btn;
     [SerializeField] GameObject hard_btn;
+
     // Start is called before the first frame update
     public void activeButton()
     {

@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3808689023125566937, guid: 889d16d24148099438a54389ddcdf24f, type: 3}
+      propertyPath: TimeLeft
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3923208817053011100, guid: 889d16d24148099438a54389ddcdf24f, type: 3}
       propertyPath: maxCoin
       value: 224
