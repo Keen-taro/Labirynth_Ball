@@ -17,6 +17,7 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
+      - serializedVersion: 3
         time: 0
         value: {x: 0, y: 0, z: 0.00000423193}
         inSlope: {x: 0, y: 0, z: 0}
